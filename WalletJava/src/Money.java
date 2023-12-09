@@ -2,26 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Wallet {
-
-    private String owner;
-    private String[] listPlace = {"CIN","CarteBancaire","CarteDeVisite","PermisDeConduire","IDPhoto","Argent"};
-    private Cin[] cinPlace = new Cin[5];
-    private BankCard[] bankCardPlace = new BankCard[5];
-    private DrivingLicense[] drivingLicensePlace = new DrivingLicense[5];
-    private VisitCard[] visitCard = new VisitCard[5];
-    private IdPhoto[] idPhotoPlace = new IdPhoto[10];
-    
+public class Money {
     private double money;
     private double saving;
     private List<Transaction> transactions;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Wallet(String owner){
+    public Money(){
         this.money = 0;
         this.transactions = new ArrayList<>();
-        this.owner = owner; 
     }
 
     public void deposit(double amount){

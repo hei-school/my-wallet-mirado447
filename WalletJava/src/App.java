@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Wallet wallet = new Wallet();
-        wallet.operations();
+       Cin cin = new Cin("4522221657451133","mirado");
+       cin.show();
     }
 }
