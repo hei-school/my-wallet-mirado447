@@ -16,7 +16,7 @@ This wallet simulation project offers realistic features for users to create, ma
 
 ## Work in Progress (WIP):
 
-## Bugs ## :
+## Bugs :
 
 ## Installation:
 
