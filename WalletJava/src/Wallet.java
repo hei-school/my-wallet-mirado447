@@ -142,8 +142,6 @@ public class Wallet implements Show {
     public void operation(){
         int option;
         while (!exit) {
-            System.out.println("Bienvenue"+ ownerName +", votre portefeuille à été crée avec succès.\nVoici les action que vous pouvez éffectuer avec: \n1-Regarder ces informations \n2-Regarder les places \n3-Regarder l'éspace restant\n4-Faire de operation");
-            
         }
     }
 
