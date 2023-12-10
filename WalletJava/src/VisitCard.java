@@ -1,4 +1,5 @@
 public class VisitCard implements Show {
+    int id;
     String societyName;
     String owner;
 
@@ -9,6 +10,7 @@ public class VisitCard implements Show {
 
     @Override
     public void show() {
+        System.out.println("ID de la carte de visite : " + this.id);
         System.out.println("Propriétaire : " + this.owner);
         System.out.println("Carte de viste de " + this.societyName );
     }
