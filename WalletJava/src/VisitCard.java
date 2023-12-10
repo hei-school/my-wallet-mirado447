@@ -3,9 +3,10 @@ public class VisitCard implements Show {
     String societyName;
     String owner;
 
-    public VisitCard(String societyName, String owner){
+    public VisitCard(String societyName, String owner , int id){
         this.societyName = societyName;
         this.owner = owner;
+        this.id = id;
     }
 
     @Override

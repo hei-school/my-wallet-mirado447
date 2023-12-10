@@ -22,21 +22,72 @@ public class Wallet implements Show {
 
     @Override
     public void show() {
-        System.out.println("Ce portefeuilleest sous le nom de " + ownerName);
+        System.out.println("Portefeuille de " + this.ownerName);
     }
 
     public void showPlace(){
+        System.out.println("Il y a des place pour :");
         for (String place : listPlace) {
             System.out.println(place);
         }
     }
     
+    public void cinShow(){
+        if (cinList.size() != 0) {
+            for (Cin cin : cinList) {
+            cin.show();
+        }
+        }else{
+            System.out.println("La place de CIN est vide.");
+        }
+    }
+
+    public void bankCardShow(){
+        if (bankCardList.size() != 0) {
+            for (BankCard bankCard : bankCardList) {
+            bankCard.show();
+        }
+        }else{
+            System.out.println("La place de carte banquaire est vide.");
+        }
+    }
+
+    public void visitCardShow(){
+        if (visitCardList.size() != 0) {
+            for (VisitCard visitCard : visitCardList ) {
+            visitCard.show();
+        }
+        }else{
+            System.out.println("La place de photo d'identitée est vide.");
+        }
+    }
+
+    public void drivingLicenseShow(){
+        if (drivingLicenseList.size() != 0) {
+            for (DrivingLicense drivingLicense : drivingLicenseList) {
+            drivingLicense.show();
+        }
+        }else{
+            System.out.println("La place de permis de conduire est vide.");
+        }
+    }
+
+    public void IdPhotoShow(){
+        if (idPhotoList.size() != 0) {
+            for (IdPhoto idPhoto : idPhotoList) {
+            idPhoto.show();
+        }
+        }else{
+            System.out.println("La place de photo d'identitée est vide.");
+        }
+    }
+
     public void espacePlace(){
         System.out.println("L'éspace libre pour CIN est " + (5 - cinList.size()));
         System.out.println("L'éspace libre pour carte bancaire est " + (5 - bankCardList.size()));
         System.out.println("L'éspace libre pour carte de visite est " + (5 - visitCardList.size()));
         System.out.println("L'éspace libre pour permis de conduire est " + (5 - drivingLicenseList.size()));
-        System.out.println("L'éspace libre pour photo d'identitée est " + (5 - idPhotoList.size()));
+        System.out.println("L'éspace libre pour photo d'identitée est " + (10 - idPhotoList.size()));
     }
 
     public void addCin(Cin cin){
@@ -139,10 +190,155 @@ public class Wallet implements Show {
         }
     }
 
-    public void operation(){
-        int option;
+    public void simulation(){
+        String optionActions = "\n1-Regarder \n2-Entrer \n3-Sortir";
+        System.out.println("Bienvenue "+ ownerName +", votre portefeuille à été crée avec succès.");
         while (!exit) {
+            
+            System.out.println("\nVoici les action que vous pouvez éffectuer : \n1-Regarder ces informations \n2-Regarder les places \n3-Regarder l'éspace restant\n4-Faire des operations \n5-Quiter");
+            int option = scanner.nextInt();
+            
+                if (option == 1){
+                    show();
+                }
+                if (option == 2) {
+                    showPlace();
+                }
+                if (option == 3) {
+                    espacePlace();
+                }
+                if (option == 4 ) {
+                    while (!exit) {
+                        
+                        System.out.println("Veuillez selectionner l'objet sur lequel vous voulez faire des operation : \n1-CIN \n2-Carte bancaire \n3-Carte de visite \n4-Permis De Conduire \n5-Photo d'identitée \n6-Argent \n7-Quiter");
+                        
+                        InputGeneralInfo input = new InputGeneralInfo();
+
+                        int optionOperation = scanner.nextInt();   //les differents option 
+                        
+                        if (optionOperation == 1) { 
+                            System.out.println(optionActions);
+                            int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                            if (optionAction == 1) {  //regarder 
+                                cinShow();
+                            }
+                            if (optionAction == 2) {  //entrer
+                                int id = input.id();
+                                String ownerName = input.ownerName();
+                                System.out.println("Veuillez saisir le numero du CIN :");
+                                String cinNumber = input.otherInfo();
+                                Cin cin = new Cin(cinNumber, ownerName, id );
+                                addCin(cin);
+                            }
+                            if (optionAction == 3) {
+                                int id = input.id();
+                                getCin(id);
+                            }
+                        }
+                        if (optionOperation == 2) {
+                            System.out.println(optionActions);
+                            int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                            if (optionAction == 1) {  //regarder 
+                                bankCardShow();
+                            }
+                            if (optionAction == 2) {  //entrer
+                                int id = input.id();
+                                String ownerName = input.ownerName();
+                                System.out.println("Veuillez saisir le nom de la banque :");
+                                String bank = input.otherInfo();
+                                BankCard bankCard = new BankCard(ownerName, bank, id );
+                                addBankCard(bankCard);
+                            }
+                            if (optionAction == 3) {
+                                int id = input.id();
+                                getBankCard(id);
+                            }
+                        }
+                        if (optionOperation == 3) {
+                            System.out.println(optionActions);
+                            int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                            if (optionAction == 1) {  //regarder 
+                                visitCardShow();
+                            }
+                            if (optionAction == 2) {  //entrer
+                                int id = input.id();
+                                String ownerName = input.ownerName();
+                                System.out.println("Veuillez saisir le nom de l'entreprise :");
+                                String societyName = input.otherInfo();
+                                VisitCard visitCard = new VisitCard(societyName, ownerName, id );
+                                addVisitCard(visitCard);
+                            }
+                            if (optionAction == 3) {
+                                int id = input.id();
+                                getVisiteCard(id);
+                            }
+                        }
+                        if (optionOperation == 4) {
+                           System.out.println(optionActions);
+                           int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                           if (optionAction == 1) {  //regarder 
+                                drivingLicenseShow();
+                            }
+                            if (optionAction == 2) {  //entrer
+                                int id = input.id();
+                                String ownerName = input.ownerName();
+                                System.out.println("Veuillez saisir le type de permis :");
+                                String type = input.otherInfo();
+                                DrivingLicense drivingLicense = new DrivingLicense(ownerName, type, id );
+                                addDrivingLicense(drivingLicense);
+                            }
+                            if (optionAction == 3) {
+                                int id = input.id();
+                                getDrivingLicense(id);
+                            } 
+                        }
+                        if (optionOperation == 5) {
+                            System.out.println(optionActions);
+                            int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                            if (optionAction == 1) {  //regarder 
+                                IdPhotoShow();
+                            }
+                            if (optionAction == 2) {  //entrer
+                                int id = input.id();
+                                String ownerName = input.ownerName();
+                                IdPhoto idPhoto = new IdPhoto(ownerName, id );
+                                addIdPhoto(idPhoto);
+                            }
+                            if (optionAction == 3) {
+                                int id = input.id();
+                                getVisiteCard(id);
+                            }
+                        }
+                        if (optionOperation == 6) {
+                            System.out.println("Veuillez choisir l'action : \n1-Déposer \n2-Retirer \n3-Montant total");
+                            int optionAction = scanner.nextInt();  //les actions à faire sur l'option choisi
+                            if (optionAction == 1) {
+                                System.out.println("Veuilles saisir le montant à ajouter : ");
+                                Double amount = scanner.nextDouble();  
+                                money.deposit(amount);
+                            }
+                            if (optionAction == 2) {  
+                                System.out.println("Veuilles saisir le montant à retirer : ");
+                                Double amount = scanner.nextDouble();
+                                money.withdraw(amount);
+                            }
+                            if (optionAction == 3) {
+                                money.totalAmount();
+                            }
+                            
+                        }
+                        if (optionOperation == 7) {
+                            exit = true;
+                        }
+                    }
+                }if (option == 5) {
+                    exit = true;
+                }
         }
     }
 
 }
+
+
+// afficher une phrase si  l'optieon entré n'existe pas (id , option , ...)
+// resoudre le bug pour l'argent 

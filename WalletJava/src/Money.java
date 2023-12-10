@@ -24,4 +24,8 @@ public class Money {
         }
     }
 
+    public void totalAmount(){
+        System.out.println(money);
+    }
+
 }

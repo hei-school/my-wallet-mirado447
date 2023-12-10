@@ -3,9 +3,10 @@ public class DrivingLicense implements Show{
     String owner;
     String type;
 
-    public DrivingLicense(String owner, String type){
+    public DrivingLicense(String owner, String type ,int id){
         this.owner = owner;
         this.type = type;
+        this.id = id; 
     }
 
     @Override
