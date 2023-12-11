@@ -15,6 +15,10 @@ This wallet simulation project offers realistic features for users to create, ma
    - Efficient organization of inserted objects.
 
 ## Work in Progress (WIP):
+   Not updated branch :
+     - Python: `feature/python`
+     - C#: `feature/C#`
+     - C++: `feature/C++`
 
 ## Bugs :
 
