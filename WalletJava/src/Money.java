@@ -20,12 +20,12 @@ public class Money {
             money -= amount;
             System.out.println("Retrait de "+ amount +" éffectué. Nouveau solde : "+ money + " Ariary" );
         }else{
-            System.out.println("Solde insuffisant pour effectuer le retait");
+            System.out.println("Solde insuffisant pour effectuer le retait. Votre solde est : "+ money + "Ariary");
         }
     }
 
     public void totalAmount(){
-        System.out.println(money);
+        System.out.println("Votre solde est : "+ money + "Ariary");
     }
 
 }

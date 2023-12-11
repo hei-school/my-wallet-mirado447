@@ -11,7 +11,7 @@ public class Wallet implements Show {
     private ArrayList<DrivingLicense> drivingLicenseList = new ArrayList<>(5);
     private ArrayList<VisitCard> visitCardList = new ArrayList<>(5);
     private ArrayList<IdPhoto> idPhotoList = new ArrayList<>(10);
-    private Money money;
+    private Money money = new Money();
 
     private Boolean exit = false;
     Scanner scanner = new Scanner(System.in);
@@ -341,4 +341,3 @@ public class Wallet implements Show {
 
 
 // afficher une phrase si  l'optieon entré n'existe pas (id , option , ...)
-// resoudre le bug pour l'argent 
